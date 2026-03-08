@@ -96,12 +96,7 @@ export function Closing() {
         </AnimateIn>
 
         <AnimateIn delay={260}>
-          <a
-            href="https://github.com/d0npedro/justice-future-platform"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="jf-btn jf-btn-primary"
-          >
+          <a href="/join" className="jf-btn jf-btn-primary">
             Watch it take shape →
           </a>
         </AnimateIn>

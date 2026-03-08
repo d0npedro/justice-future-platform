@@ -1,4 +1,5 @@
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const problems = [
   {
@@ -37,6 +38,7 @@ export function WhyMatters() {
         <AnimateIn>
           <SectionLabel>Why This Matters</SectionLabel>
         </AnimateIn>
+
 
         <AnimateIn delay={80}>
           <h2
@@ -128,32 +130,3 @@ export function WhyMatters() {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "8px",
-        fontSize: "0.68rem",
-        fontWeight: 700,
-        color: "var(--c-accent)",
-        letterSpacing: "0.13em",
-        textTransform: "uppercase",
-        fontFamily: "var(--font-body), system-ui, sans-serif",
-        marginBottom: "1.5rem",
-      }}
-    >
-      <span
-        style={{
-          display: "inline-block",
-          width: "20px",
-          height: "1px",
-          background: "var(--c-accent)",
-          verticalAlign: "middle",
-        }}
-      />
-      {children}
-    </div>
-  );
-}

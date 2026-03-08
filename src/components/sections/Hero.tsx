@@ -135,12 +135,7 @@ export function Hero() {
               See How It Works
               <ArrowDown />
             </a>
-            <a
-              href="https://github.com/d0npedro/justice-future-platform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="jf-btn jf-btn-ghost"
-            >
+            <a href="/join" className="jf-btn jf-btn-ghost">
               Follow Development →
             </a>
           </div>

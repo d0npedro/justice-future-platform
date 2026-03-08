@@ -1,4 +1,5 @@
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const visionPoints = [
   {
@@ -63,7 +64,7 @@ export function BetterPath() {
         }}
       >
         <AnimateIn>
-          <DarkSectionLabel>A Better Path</DarkSectionLabel>
+          <SectionLabel dark>A Better Path</SectionLabel>
         </AnimateIn>
 
         <AnimateIn delay={80}>
@@ -165,32 +166,3 @@ export function BetterPath() {
   );
 }
 
-function DarkSectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "8px",
-        fontSize: "0.68rem",
-        fontWeight: 700,
-        color: "#3b82f6",
-        letterSpacing: "0.13em",
-        textTransform: "uppercase",
-        fontFamily: "var(--font-body), system-ui, sans-serif",
-        marginBottom: "1.5rem",
-      }}
-    >
-      <span
-        style={{
-          display: "inline-block",
-          width: "20px",
-          height: "1px",
-          background: "#3b82f6",
-          verticalAlign: "middle",
-        }}
-      />
-      {children}
-    </div>
-  );
-}
