@@ -4,13 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
-const links = [
+const links: { href: string; label: string; accent?: boolean }[] = [
   { href: "/problem",      label: "Problem" },
   { href: "/solution",     label: "Solution" },
   { href: "/architecture", label: "Architecture" },
   { href: "/api",          label: "API" },
   { href: "/roadmap",      label: "Roadmap" },
   { href: "/about",        label: "About" },
+  { href: "/demo",         label: "Demo", accent: true },
 ];
 
 export function Nav() {
@@ -126,10 +127,19 @@ export function Nav() {
                 letterSpacing: "0.01em",
                 fontFamily: "var(--font-body), system-ui, sans-serif",
                 transition: "color 0.15s, background 0.15s",
-                color: isActive(link.href) ? "#e2e8f0" : "#64748b",
+                color: isActive(link.href)
+                  ? "#e2e8f0"
+                  : link.accent
+                  ? "#93c5fd"
+                  : "#64748b",
                 background: isActive(link.href)
                   ? "rgba(255,255,255,0.07)"
+                  : link.accent && !isActive(link.href)
+                  ? "rgba(37,99,235,0.1)"
                   : "transparent",
+                border: link.accent && !isActive(link.href)
+                  ? "1px solid rgba(37,99,235,0.2)"
+                  : "1px solid transparent",
                 whiteSpace: "nowrap",
               }}
             >

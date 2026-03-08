@@ -96,9 +96,14 @@ export function Closing() {
         </AnimateIn>
 
         <AnimateIn delay={260}>
-          <a href="/join" className="jf-btn jf-btn-primary">
-            Watch it take shape →
-          </a>
+          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="/demo" className="jf-btn jf-btn-primary">
+              See the interactive demo →
+            </a>
+            <a href="/join" className="jf-btn jf-btn-ghost">
+              Watch it take shape
+            </a>
+          </div>
         </AnimateIn>
       </div>
     </section>

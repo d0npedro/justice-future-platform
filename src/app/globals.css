@@ -267,6 +267,9 @@ h1, h2, h3, h4 {
   .jf-two-col     { grid-template-columns: 1fr; }
   .jf-principle-row { grid-template-columns: 1fr; gap: 0.4rem; }
   .jf-vision-grid   { grid-template-columns: 1fr; }
+  /* Case detail: stack sidebar below content on mobile */
+  .jf-case-layout { grid-template-columns: 1fr !important; }
+  .jf-case-stats  { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 @media (min-width: 901px) {
