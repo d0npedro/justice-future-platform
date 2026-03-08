@@ -1,26 +1,209 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ───────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --c-bg: #fafaf8;
+  --c-bg-alt: #f0ede7;
+  --c-fg: #0f172a;
+  --c-muted: #64748b;
+  --c-subtle: #94a3b8;
+  --c-border: #e2e8eb;
+  --c-accent: #2563eb;
+  --c-dark: #0c1628;
+  --c-dark-fg: #e2e8f0;
+  --c-dark-muted: #94a3b8;
+  --c-dark-border: rgba(255, 255, 255, 0.07);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Base ────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Grain Texture ───────────────────────────────────────────── */
+.jf-grain {
+  position: relative;
+}
+.jf-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────── */
+.jf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  font-family: var(--font-body), system-ui, sans-serif;
+  cursor: pointer;
+  border: none;
+  line-height: 1;
+}
+.jf-btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+.jf-btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+.jf-btn-ghost {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.jf-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #e2e8f0;
+}
+
+/* ─── Nav Link ────────────────────────────────────────────────── */
+.jf-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.01em;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+.jf-nav-link:hover {
+  color: #e2e8f0;
+}
+
+/* ─── Scroll Animations ───────────────────────────────────────── */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-animate].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-stagger].in-view > *:nth-child(1) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0ms;
+}
+[data-stagger].in-view > *:nth-child(2) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 90ms;
+}
+[data-stagger].in-view > *:nth-child(3) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 180ms;
+}
+[data-stagger].in-view > *:nth-child(4) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 270ms;
+}
+[data-stagger].in-view > *:nth-child(5) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 360ms;
+}
+
+/* ─── Hero Entrance ───────────────────────────────────────────── */
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.jf-hero-item {
+  animation: heroUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.jf-hero-item:nth-child(1) { animation-delay: 0ms; }
+.jf-hero-item:nth-child(2) { animation-delay: 130ms; }
+.jf-hero-item:nth-child(3) { animation-delay: 260ms; }
+.jf-hero-item:nth-child(4) { animation-delay: 400ms; }
+.jf-hero-item:nth-child(5) { animation-delay: 530ms; }
+
+/* ─── Responsive Helpers ──────────────────────────────────────── */
+.jf-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.jf-principle-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+.jf-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+}
+
+@media (max-width: 600px) {
+  .jf-two-col {
+    grid-template-columns: 1fr;
+  }
+  .jf-principle-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .jf-vision-grid {
+    grid-template-columns: 1fr;
+  }
 }
