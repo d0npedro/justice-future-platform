@@ -150,6 +150,27 @@ export function Nav() {
 
         {/* Right side */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
+          <Link
+            href="/start"
+            className="jf-desktop-nav"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "6px 14px",
+              background: "#2563eb",
+              color: "#fff",
+              borderRadius: "5px",
+              fontSize: "0.78rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              fontFamily: "var(--font-body), system-ui, sans-serif",
+              letterSpacing: "0.01em",
+              whiteSpace: "nowrap",
+              transition: "background 0.15s",
+            }}
+          >
+            Start a case
+          </Link>
           <a
             href="https://github.com/d0npedro/justice-future-platform"
             target="_blank"
@@ -188,6 +209,13 @@ export function Nav() {
             {link.label}
           </Link>
         ))}
+        <Link
+          href="/start"
+          className="jf-mobile-nav-item"
+          style={{ color: "#93c5fd", fontWeight: 600 }}
+        >
+          Start a case →
+        </Link>
         <a
           href="https://github.com/d0npedro/justice-future-platform"
           target="_blank"
